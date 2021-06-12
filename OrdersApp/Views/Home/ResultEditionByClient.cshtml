@@ -1,0 +1,33 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE Html>
+<html>
+<head>
+    <meta name="viewPort" content="width=device-width">
+    <title>adding client</title>
+    <style>
+        .box1 {
+            background: #f0f0f0; /* Цвет фона */
+            width: 300px; /* Ширина блока */
+            padding: 10px; /* Поля */
+            border: 2px solid #000; /* Параметры рамки */
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+
+        <div>
+            <p>Данные изменены </p>
+        </div>
+        <div>
+            <p>@ViewBag.Info </p>
+        </div>
+
+        <div>
+            <a asp-action="Index"><h3>На главную страницу</h3> </a>
+        </div>
+    </div>
+
+</body>
+
+</html>

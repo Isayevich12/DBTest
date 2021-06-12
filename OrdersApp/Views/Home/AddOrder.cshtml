@@ -1,0 +1,50 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model OrdersApp.Models.OrderModel
+<!DOCTYPE Html>
+<html>
+<head>
+    <meta name="viewPort" content="width=device-width">
+    <title>adding order</title>
+    <style>
+        .box1 {
+            background: #f0f0f0; /* Цвет фона */
+            width: 300px; /* Ширина блока */
+            padding: 10px; /* Поля */
+            border: 2px solid #000; /* Параметры рамки */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>Добавление нового заказа для клиента :@($"Id: {ViewBag.Client.Id}, Name: {ViewBag.Client.Name}, Name: {ViewBag.Client.Adress}") </p>
+
+        <form asp-action="AddOrder" method="post">
+            <div class="box1">
+                <label asp-for="Amount">Количество:</label>
+                <input asp-for="Amount" />
+            </div>
+            <div class="box1">
+                <label asp-for="Date">Дата:</label>
+                <input asp-for="Date" />
+            </div>
+            <div class="box1">
+                <label asp-for="Cost">Стоимость:</label>
+                <input asp-for="Cost" />
+            </div>
+            <div class="box1">
+                <label asp-for="Description">Описание:</label>
+                <input asp-for="Description" />
+            </div>
+
+            <div class="box1">
+                <button type="submit">Submit</button>
+            </div>
+            <div>
+                <a asp-action="Index"><h3>На главную страницу</h3> </a>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>

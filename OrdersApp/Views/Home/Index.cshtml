@@ -1,0 +1,72 @@
+﻿@using OrdersApp.ViewModels
+@using DBTest.Entities
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model OrderViewModel
+@{
+    Layout = null;
+}
+<!doctype html>
+<html>
+<head>
+    <title>Main Menue</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width">
+    <style>
+        .box1 {
+            background: #f0f0f0; /* Цвет фона */
+            width: 300px; /* Ширина блока */
+            padding: 10px; /* Поля */
+            border: 2px solid #000; /* Параметры рамки */
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <a align="right" asp-action="AddClient"><h3>Добавить клиента</h3> </a>
+    <h3 align="center">Все клиенты:</h3>
+
+    @try
+    {
+        @foreach (var item in Model.Clients)
+        {
+            <table border="3" width="20%" cellpadding="5" align="center" style="font-size:20px">
+                <tr>
+                    <th colspan="2">
+                        <div class=".box1">
+                            <p>@($"Имя: {item.Name} Адрес: {item.Adress}")</p>
+                            <p> @Html.ActionLink("Редактировать", "EditClient", new { name = item.Name, adress = item.Adress }) </p>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <div>
+                            <p>
+                                @Html.ActionLink("Удалить", "DeleteClient", new { name = item.Name, adress = item.Adress })
+                            </p>
+
+                        </div>
+                    </th>
+                    <th>
+                        <div>
+                            <p>
+                                @Html.ActionLink("Заказы", "ClientOrders", new { name = item.Name, adress = item.Adress })
+                            </p>
+                        </div>
+                    </th>
+                </tr>
+
+            </table>
+
+        }
+
+    }
+    catch
+    {      
+    }
+
+</body>
+</html>

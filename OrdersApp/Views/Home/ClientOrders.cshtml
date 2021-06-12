@@ -1,0 +1,76 @@
+﻿@using OrdersApp.ViewModels
+@using DBTest.Entities
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model OrdersByCurrentClient
+@{
+    Layout = null;
+}
+<!doctype html>
+<html>
+<head>
+    <title>Client orders </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width">
+    <style>
+        .box1 {
+            background: #f0f0f0; /* Цвет фона */
+            width: 300px; /* Ширина блока */
+            padding: 10px; /* Поля */
+            border: 2px solid #000; /* Параметры рамки */
+        }
+    </style>
+</head>
+<body>
+
+
+
+    @*<a align="right" asp-action="AddOrder"><h3>Добавить заказ</h3> </a>*@
+    <div align="right"> @Html.ActionLink("Добавить заказ", "AddOrder", new { clientId = Model.Client.Id }) </div>
+    <h3 align="center">Все заказы клиента:@($"Id: { Model.Client.Id}, Name: { Model.Client.Name}, Adress: {Model.Client.Adress} ")</h3>
+
+    @{
+        try
+        {
+            @foreach (var item in Model.Orders)
+            {
+
+                <table border="3" width="20%" cellpadding="5" align="center" style="font-size:20px">
+                    <tr>
+                        <th colspan="2">
+                            <div class=".box1">
+                                <ul>
+                                    <li>Дата: @item.Date</li>
+                                    <li>Количество: @item.Amount </li>
+                                    <li>Стоимость: @item.Cost </li>
+                                    <li>Описание: @item.Description </li>
+                                    <li>Id клиента: @item.ClientId </li>
+                                </ul>
+                                <p> @Html.ActionLink("Удалить заказ", "DeleteOrder", new { orderId = item.Id, clientId = Model.Client.Id }) </p>
+                            </div>
+                        </th>
+                    </tr>
+
+                </table>
+
+            }
+        }
+        catch
+        {      
+        }
+        finally
+        {
+            <div>
+                <a asp-action="Index" align="center"><h3>На главную страницу</h3> </a>
+            </div>
+        }
+
+
+    }
+
+
+
+
+
+</body>
+</html>

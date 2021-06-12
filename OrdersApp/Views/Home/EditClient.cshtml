@@ -1,0 +1,44 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model OrdersApp.Models.ClientModel
+<!DOCTYPE Html>
+<html>
+<head>
+    <meta name="viewPort" content="width=device-width">
+    <title>addin client</title>
+    <style>
+        .box1 {
+            background: #f0f0f0; /* Цвет фона */
+            width: 300px; /* Ширина блока */
+            padding: 10px; /* Поля */
+            border: 2px solid #000; /* Параметры рамки */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        @*<p>Текущие данные: @ViewBag.Client</p>*@
+        <p>Текущие данные: @ViewData["Client"]</p>
+        <p>Введите новые данные  клиента</p>
+
+
+        <form asp-action="EditClient" method="post">
+            <div class="box1">
+                <label asp-for="Name">Имя:</label>
+                <input asp-for="Name" />
+            </div>
+            <div class="box1">
+                <label asp-for="Adress">Адрес:</label>
+                <input asp-for="Adress" />
+            </div>
+            <div class="box1">
+                <button type="submit">Submit</button>
+            </div>
+            <div>
+                <a asp-action="Index"><h3>На главную страницу</h3> </a>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>
